@@ -1,0 +1,30 @@
+/* Premium-Schicht: Intro (Tropfen fällt aufs Dach, läuft ins Fallrohr), Fallrohr mit Tropfen als Kapitel-Anzeige (Kupfer → Patina) */
+.intro{display:none}
+html.intro-on .intro{display:block;position:fixed;inset:0;z-index:1000;cursor:pointer;overflow:hidden;background:#eef1f3;animation:introFailsafe .01s 4.2s forwards;transition:opacity .6s,transform .7s cubic-bezier(.7,0,.25,1)}
+@keyframes introFailsafe{to{visibility:hidden;pointer-events:none}}
+.intro-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.i-svg{width:min(64vw,300px);height:auto;overflow:visible}
+.i-roof{fill:none;stroke:#24282c;stroke-width:8;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:260;stroke-dashoffset:260;animation:dr .6s .1s forwards}
+.i-gutter,.i-pipe{fill:none;stroke:#b8733e;stroke-width:8;stroke-linecap:round;stroke-dasharray:220;stroke-dashoffset:220;animation:dr .5s .5s forwards}
+.i-pipe{animation-delay:.75s}
+@keyframes dr{to{stroke-dashoffset:0}}
+.i-drop{fill:#2c5079;animation:fall 1.3s .35s cubic-bezier(.5,0,.8,.6) forwards;opacity:0}
+@keyframes fall{0%{opacity:1;transform:translate(0,-10px)}40%{transform:translate(0,52px)}70%{transform:translate(98px,72px)}100%{opacity:1;transform:translate(102px,180px)}}
+.intro-name{margin:.6rem 0 0;font:800 clamp(2.4rem,8vw,4rem)/1 var(--disp);color:#24282c;letter-spacing:-.02em;opacity:0;animation:nbIn .5s .8s forwards}
+.intro-sub{margin:.4rem 0 0;font:400 1.6rem/1 var(--hand);color:#2c5079;opacity:0;animation:nbIn .5s 1s forwards}
+@keyframes nbIn{to{opacity:1}}
+.intro-skip{position:absolute;right:1.4rem;bottom:1.4rem;background:#24282c;border:0;color:#f5f2ec;font:700 .9rem/1 var(--body);padding:.8rem 1.1rem;border-radius:6px;cursor:pointer}
+html.intro-out .intro{opacity:0;transform:translateY(-4%);pointer-events:none}
+
+.fallrohr{position:fixed;right:1.1rem;top:7.5rem;bottom:6.5rem;width:12px;z-index:30;pointer-events:none;opacity:0;transition:opacity .4s}
+.fallrohr.show{opacity:1}
+.fallrohr.over-foot{opacity:0}
+.fr-pipe{position:absolute;inset:0;border-radius:6px;background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(255,255,255,.35) 40%,rgba(0,0,0,.2)),color-mix(in srgb,var(--patina) calc(var(--sp,0) * 100%),var(--cu));box-shadow:0 0 0 2px rgba(36,40,44,.15)}
+.fr-pipe::before,.fr-pipe::after{content:"";position:absolute;left:-4px;right:-4px;height:6px;border-radius:2px;background:#5c646d;top:25%}
+.fr-pipe::after{top:70%}
+.fr-drop{position:absolute;left:50%;top:calc(var(--sp,0) * (100% - 26px));display:flex;align-items:center;gap:.5rem;transform:translateX(-50%);transition:top .15s linear}
+.fr-drop svg{width:20px;height:26px;fill:#2c5079;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+.fr-drop b{position:absolute;right:28px;white-space:nowrap;font:400 1.2rem/1 var(--hand);color:var(--blau);background:#fff;padding:.3rem .6rem;border-radius:4px;box-shadow:0 4px 12px -6px rgba(0,0,0,.4)}
+@media (max-width:1279px){.fallrohr{display:none}}
+@media (prefers-reduced-motion:reduce){.intro{display:none!important}}
+.fallrohr.over-hero{opacity:0}

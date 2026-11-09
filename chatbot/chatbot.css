@@ -1,0 +1,61 @@
+/* Demo-Assistent – Farben/Schriften per CSS-Variablen oder kb.json "theme" anpassbar */
+.cb-root{--cb-accent:#a8432a;--cb-accent-d:#8a3420;--cb-ink:#2b1d14;--cb-paper:#fffaf2;--cb-soft:#f3e9d9;--cb-line:#e3d6c2;--cb-gold:#c9a25a;
+  --cb-font:system-ui,-apple-system,"Segoe UI",sans-serif;--cb-serif:Georgia,serif;--cb-right:20px;--cb-bottom:20px;--cb-bottom-mobile:88px;
+  position:fixed;right:var(--cb-right);bottom:var(--cb-bottom);z-index:60;font-family:var(--cb-font);color:var(--cb-ink);font-size:15px;line-height:1.45}
+.cb-root *{box-sizing:border-box}
+.cb-panel,.cb-log,.cb-chips,.cb-form{margin:0}
+.cb-panel{padding:0}
+.cb-launcher{display:flex;align-items:center;gap:8px;height:56px;padding:0 20px 0 16px;border:0;border-radius:999px;background:var(--cb-ink);color:#fff;font:700 15px var(--cb-font);cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.3);transition:transform .2s}
+.cb-launcher:hover{transform:translateY(-2px)}
+.cb-launcher svg{color:var(--cb-gold)}
+.cb-open .cb-launcher{display:none}
+.cb-panel{position:absolute;right:0;bottom:0;width:380px;max-width:calc(100vw - 32px);height:min(600px,calc(100vh - 110px));display:flex;flex-direction:column;background:var(--cb-paper);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);animation:cb-in .22s ease-out}
+.cb-panel[hidden]{display:none}
+@keyframes cb-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.cb-head{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;background:var(--cb-ink);color:#fff}
+.cb-avatar{width:38px;height:38px;object-fit:contain}
+.cb-head-text{flex:1;display:flex;flex-direction:column;min-width:0}
+.cb-head-text strong{font:600 19px/1.1 var(--cb-serif)}
+.cb-head-text span{font-size:12.5px;color:#e8dcc6}
+.cb-badge{font-style:normal;font-weight:700;font-size:10px;letter-spacing:.08em;background:var(--cb-gold);color:var(--cb-ink);padding:2px 6px;border-radius:999px;margin-left:4px}
+.cb-close{background:rgba(255,255,255,.1);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:24px;line-height:1;cursor:pointer}
+.cb-log{flex:1;overflow-y:auto;padding:16px 14px 6px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.cb-msg{display:flex;flex-direction:column;max-width:88%}
+.cb-bubble{padding:10px 13px;border-radius:14px;word-wrap:break-word}
+.cb-bot{align-self:flex-start}
+.cb-bot .cb-bubble{background:#fff;border:1px solid var(--cb-line);border-bottom-left-radius:4px}
+.cb-user{align-self:flex-end}
+.cb-user .cb-bubble{background:var(--cb-accent);color:#fff;border-bottom-right-radius:4px}
+.cb-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.cb-link{display:inline-block;padding:7px 12px;border-radius:999px;background:var(--cb-ink);color:#fff!important;text-decoration:none;font-weight:600;font-size:13.5px}
+.cb-typing .cb-bubble{display:flex;gap:4px;padding:13px}
+.cb-typing i{width:7px;height:7px;border-radius:50%;background:#b9a68c;animation:cb-dot 1s infinite}
+.cb-typing i:nth-child(2){animation-delay:.15s}.cb-typing i:nth-child(3){animation-delay:.3s}
+@keyframes cb-dot{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.cb-chips{display:flex;gap:6px;overflow-x:auto;padding:8px 14px;scrollbar-width:none}
+.cb-chips::-webkit-scrollbar{display:none}
+.cb-chip{flex:0 0 auto;padding:8px 13px;border-radius:999px;border:1.5px solid var(--cb-accent);background:#fff;color:var(--cb-accent);font:600 13.5px var(--cb-font);cursor:pointer}
+.cb-chip:hover{background:var(--cb-accent);color:#fff}
+.cb-form{display:flex;gap:8px;padding:8px 12px;border-top:1px solid var(--cb-line);background:#fff}
+.cb-input{flex:1;min-width:0;border:1.5px solid var(--cb-line);border-radius:999px;padding:11px 15px;font:16px var(--cb-font);color:var(--cb-ink);background:var(--cb-paper)}
+.cb-input:focus{outline:none;border-color:var(--cb-accent)}
+.cb-send{width:44px;height:44px;flex:0 0 44px;border:0;border-radius:50%;background:var(--cb-accent);color:#fff;cursor:pointer;display:grid;place-items:center}
+.cb-foot{margin:0;padding:6px 12px 9px;background:#fff;font-size:11px;color:#8a7663;text-align:center}
+.cb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:899px){
+  .cb-root{bottom:var(--cb-bottom-mobile);right:16px}
+  .cb-launcher{height:52px;padding:0 16px 0 14px}
+}
+@media (max-width:600px){
+  .cb-open{inset:auto 0 0 0;right:0;bottom:0}
+  .cb-open .cb-panel{position:fixed;left:0;right:0;bottom:0;width:100%;max-width:none;height:82svh;border-radius:18px 18px 0 0}
+}
+@media (prefers-reduced-motion:reduce){.cb-panel{animation:none}.cb-typing i{animation:none}}
+/* Runde 8: Übergabe an Mensch, sichtbarer Fokus, Chips umbrechen statt versteckt scrollen */
+.cb-chips{flex-wrap:wrap;overflow:visible}
+.cb-handoff{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:0;padding:7px 14px;border-top:1px dashed var(--cb-line);font-size:13px;color:var(--cb-ink)}
+.cb-handoff span{opacity:.8;margin-right:2px}
+.cb-hand{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:var(--cb-soft);color:var(--cb-ink)!important;text-decoration:none;font-weight:700;font-size:13px;border:1px solid var(--cb-line)}
+.cb-hand:hover{background:var(--cb-ink);color:#fff!important}
+.cb-launcher:focus-visible,.cb-chip:focus-visible,.cb-link:focus-visible,.cb-hand:focus-visible,.cb-close:focus-visible,.cb-send:focus-visible{outline:3px solid var(--cb-gold);outline-offset:2px}
+.cb-input:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb,var(--cb-accent) 30%,transparent)}

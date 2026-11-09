@@ -1,0 +1,28 @@
+/* plus.css – Runde 8: Route-Links, Vorher/Nachher (Demo). Farben erben vom Inhalt. */
+.pl-route{display:inline-flex;flex-wrap:wrap;gap:.25rem .4rem;align-items:baseline;margin:.35rem 0 0 .9rem;font-size:.9em}
+.pl-route-block{display:flex;margin:.8rem 0 0}
+.pl-route a{color:inherit;text-decoration:underline;text-underline-offset:.18em;font-weight:600}
+.pl-route-lbl{opacity:.75}
+.pl-vn-btn{margin-left:.7rem;padding:.25rem .7rem;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:inherit;font-size:.92em;font-weight:600;cursor:pointer;white-space:nowrap}
+.pl-vn-btn:hover{background:rgba(255,255,255,.14)}
+.pl-vn-btn:focus-visible,.pl-route a:focus-visible,.pl-vn button:focus-visible{outline:3px solid #f2b705;outline-offset:2px}
+.pl-vn{width:min(62rem,calc(100vw - 1.5rem));max-height:calc(100dvh - 1.5rem);padding:1.4rem 1.4rem 1rem;border:0;border-radius:14px;background:#fbf8f2;color:#2a2420;box-shadow:0 30px 80px rgba(0,0,0,.45);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;overflow:auto}
+.pl-vn::backdrop{background:rgba(20,16,12,.62)}
+.pl-vn h2{margin:.1rem 2.6rem .4rem 0;font:600 clamp(1.35rem,3vw,1.9rem)/1.15 Georgia,serif;color:inherit;text-transform:none;letter-spacing:normal}
+.pl-vn-kick{margin:0;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#6d5f52}
+.pl-vn-txt{margin:0 0 1rem;max-width:44rem;color:#4a4038}
+.pl-vn-src{margin:.6rem 0 0;font-size:.8rem;color:#6d5f52}
+.pl-vn-x{position:absolute;top:.5rem;right:.6rem;margin:0}
+.pl-vn-x button{width:2.6rem;height:2.6rem;border:0;border-radius:50%;background:#ece5d9;color:#2a2420;font-size:1.5rem;line-height:1;cursor:pointer}
+.pl-cmp{position:relative;width:100%;max-height:68dvh;margin:0 auto;overflow:hidden;border-radius:8px;background:#ddd;box-shadow:0 0 0 1px rgba(0,0,0,.12);user-select:none}
+.pl-cmp img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.pl-cmp-neu{position:absolute;inset:0}
+.pl-cmp-alt{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.pl-cmp-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25);pointer-events:none}
+.pl-cmp-line::after{content:"⟷";position:absolute;top:50%;left:50%;translate:-50% -50%;width:2.6rem;height:2.6rem;border-radius:50%;background:#fff;color:#2a2420;display:grid;place-items:center;font-size:1.1rem;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.pl-cmp-l,.pl-cmp-r{position:absolute;top:.6rem;padding:.2rem .55rem;border-radius:999px;background:rgba(20,16,12,.78);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.04em;pointer-events:none}
+.pl-cmp-l{left:.6rem}.pl-cmp-r{right:.6rem}
+.pl-cmp input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.pl-cmp:has(input:focus-visible){outline:3px solid #f2b705;outline-offset:3px}
+.pl-cmp-ph{display:grid;place-items:center;min-height:12rem;border:2px dashed #cbbfae;border-radius:8px;padding:1rem;text-align:center}
+@media print{.pl-vn-btn,.pl-vn{display:none!important}}

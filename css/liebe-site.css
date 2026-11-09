@@ -1,0 +1,12 @@
+/* Kennerknecht – liebevolle Details (Weg des Wassers). Wird von liebe_inject.py nicht überschrieben. */
+:root{--lv-hand:'Gochi','Segoe Print',cursive;--lv-ink:#2c5079;--lv-ul:#b8733e;--lv-tex-o:.3;--lv-note-fs:1.3rem;--lv-ul-w:230px;--lv-egg-fs:1.25rem}
+.referenzen,.kontakt,.footer{--lv-ink:#d4925c;--lv-ul:#d4925c}
+.footer .foot-top{position:relative}
+.lv-egg-hahn .lv-tropf{transform-origin:42px 40px;transition:none}
+.lv-egg-hahn.lv-egg-on .lv-tropf{animation:tropf 1s cubic-bezier(.5,0,.9,.5) 3}
+@keyframes tropf{0%{transform:translateY(-6px) scale(.4);opacity:0}30%{opacity:1;transform:none}100%{transform:translateY(22px);opacity:0}}
+.lv-egg-hahn .lv-egg-msg{position:absolute;left:100%;top:50%;translate:0 -50%;width:15rem;margin-left:.8rem}
+@media (max-width:899px){.lv-egg-hahn .lv-egg-msg{left:auto;right:0;top:100%;translate:0 .5rem;width:min(13rem,calc(100vw - 3rem));text-align:right;background:#33393f;padding:.5rem .7rem;border-radius:6px}}
+@media (prefers-reduced-motion:reduce){.lv-egg-hahn.lv-egg-on .lv-tropf{animation:none}}
+.lv-404{--lv-404-bg:#f5f2ec;--lv-404-ink:#1d2125;--lv-404-accent:#b4480b;--lv-404-font:'Atkinson',system-ui,sans-serif;--lv-404-display:'Bricolage',system-ui,sans-serif;--lv-404-r:8px;--lv-404-hw:800}
+.lv-404-art{color:#b8733e}

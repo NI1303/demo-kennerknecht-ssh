@@ -1,0 +1,122 @@
+/* liebe.css – gemeinsame „Handgemacht“-Schicht (Runde 7). Farben/Schrift je Seite über Variablen in liebe-site.css:
+   --lv-hand (Handschrift), --lv-ink (Notizen), --lv-ul (Unterstreichung), --lv-accent, --lv-paper, --lv-tape */
+:root{--lv-hand:cursive;--lv-ink:currentColor;--lv-ul:currentColor;--lv-accent:currentColor;--lv-paper:#fbf7ef;--lv-tape:rgba(236,224,190,.78);--lv-ease:cubic-bezier(.22,.61,.36,1);--lv-tex-o:.5}
+.lv-anchor{position:relative;inset:auto!important}
+
+/* Papier-/Holz-/Stoff-Textur: ein ruhendes, sehr leichtes Korn über der Seite */
+html[class*="lv-tex-"] body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2147483000;opacity:var(--lv-tex-o);background-size:256px 256px}
+html[class*="lv-tex-"] body::after{background-image:url(../img/liebe/tex.webp)}
+@media print{html[class*="lv-tex-"] body::after{display:none}}
+
+/* 1 · Unterstreichung */
+.lv-ul{display:block;width:min(var(--lv-ul-w,210px),62%);height:var(--lv-ul-h,13px);margin:.18em 0 0 var(--lv-ul-ml,-.05em);color:var(--lv-ul);pointer-events:none;line-height:0}
+.lv-ul-c{margin-inline:auto}
+.lv-ul-alt{transform:rotate(-1.2deg) scaleX(-1)}
+.lv-ul svg{width:100%;height:100%;overflow:visible;display:block}
+.lv-ul path{fill:none;stroke:currentColor;stroke-width:var(--lv-ul-sw,2.6);stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.15s .45s var(--lv-ease)}
+.lv-in>.lv-ul path,.in>.lv-ul path,.lv-reduce .lv-ul path{stroke-dashoffset:0}
+.lv-ul-brush path{stroke-width:calc(var(--lv-ul-sw,2.6) * 1.8)}
+
+/* 2 · Randnotizen */
+.lv-note{position:absolute;z-index:3;display:flex;align-items:flex-start;gap:.15rem;font-family:var(--lv-hand);font-size:var(--lv-note-fs,1.35rem);line-height:1.05;color:var(--lv-ink);font-weight:var(--lv-note-fw,500);width:max-content;max-width:var(--lv-note-mw,15rem);pointer-events:none;transform:rotate(var(--lv-rot,-3deg));opacity:0;transition:opacity .7s .25s var(--lv-ease),translate .7s .25s var(--lv-ease);translate:0 6px;text-wrap:balance}
+.lv-note.lv-in,.lv-reduce .lv-note{opacity:1;translate:0 0}
+.lv-note-t{display:block}
+.lv-arrow{flex:none;width:3.2rem;height:2.2rem;overflow:visible;margin-top:.1rem}
+.lv-arrow path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s .55s var(--lv-ease)}
+.lv-arrow .lv-ah{transition-delay:1.2s;transition-duration:.35s}
+.lv-in .lv-arrow path,.lv-reduce .lv-arrow path{stroke-dashoffset:0}
+.lv-arrow-dl .lv-arrow{}                         /* Pfeil zeigt nach unten links (Grundform) */
+.lv-arrow-dr .lv-arrow{transform:scaleX(-1)}
+.lv-arrow-ul .lv-arrow{transform:scaleY(-1)}
+.lv-arrow-ur .lv-arrow{transform:scale(-1,-1)}
+.lv-arrow-dr,.lv-arrow-ur{flex-direction:row-reverse}
+@media (max-width:899px){
+  .lv-note-dk{display:none}
+  .lv-note-m{position:static;display:flex;margin:.9rem 0 .2rem;width:auto;max-width:100%;font-size:var(--lv-note-fs-m,1.2rem);transform:rotate(-1.5deg);inset:auto!important}
+  .lv-note-m .lv-arrow{width:2.4rem;height:1.7rem}
+}
+
+/* 3 · Bildrahmen-Details */
+.lv-deco{position:absolute;inset:0;pointer-events:none;z-index:4}
+.lv-c{position:absolute;width:26px;height:26px;background:var(--lv-corner,#2b1c13);opacity:.88;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.lv-c1{top:var(--lv-c-off,-4px);left:var(--lv-c-off,-4px);clip-path:polygon(0 0,100% 0,0 100%)}
+.lv-c2{top:var(--lv-c-off,-4px);right:var(--lv-c-off,-4px);clip-path:polygon(0 0,100% 0,100% 100%)}
+.lv-c3{bottom:var(--lv-c-off,-4px);right:var(--lv-c-off,-4px);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.lv-c4{bottom:var(--lv-c-off,-4px);left:var(--lv-c-off,-4px);clip-path:polygon(0 0,100% 100%,0 100%)}
+.lv-tape{position:absolute;top:-12px;left:50%;width:92px;height:26px;margin-left:-46px;background:var(--lv-tape);transform:rotate(-4deg);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.lv-tape-r{transform:rotate(5deg);left:auto;right:14px;margin:0}
+.lv-pin{position:absolute;top:-7px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff7 0 2px,transparent 3px),var(--lv-pin,#ad4430);box-shadow:0 2px 3px rgba(0,0,0,.35)}
+.lv-fr{rotate:var(--lv-tilt,0deg);transition:rotate .5s var(--lv-ease),translate .5s var(--lv-ease)}
+@media (hover:hover){.lv-fr:hover{rotate:0deg;translate:0 -3px}}
+
+/* 4 · Hover & Klick */
+.lv-lift{transition:translate .4s var(--lv-ease),rotate .4s var(--lv-ease),box-shadow .4s var(--lv-ease)}
+@media (hover:hover){.lv-lift:hover{translate:0 -5px;rotate:-.5deg}}
+.lv-squish{transition:scale .18s var(--lv-ease)}
+.lv-squish:active{scale:.96}
+.lv-burst{position:fixed;width:0;height:0;z-index:2147483001;pointer-events:none}
+.lv-bp{position:absolute;left:0;top:0;width:18px;height:18px;transform:translate(-50%,-50%)}
+.lv-bp svg{width:100%;height:100%;fill:currentColor;overflow:visible}
+.lv-bp svg .o{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.lv-bp svg .c{fill:#fff8e6}
+
+/* 5 · Überraschung */
+.lv-egg{position:absolute;z-index:5;display:flex;align-items:center;gap:.6rem}
+.lv-egg-btn{all:unset;cursor:pointer;display:block;line-height:0;border-radius:10px;transition:transform .35s var(--lv-ease)}
+.lv-egg-btn:focus-visible{outline:2px dashed currentColor;outline-offset:4px}
+.lv-egg-btn svg{display:block;overflow:visible}
+@media (hover:hover){.lv-egg-btn:hover{transform:rotate(-8deg) scale(1.06)}}
+.lv-egg-msg{font-family:var(--lv-hand);font-size:var(--lv-egg-fs,1.3rem);line-height:1.1;max-width:16rem;color:var(--lv-egg-ink,currentColor);opacity:0;translate:-6px 0;transition:opacity .45s var(--lv-ease),translate .45s var(--lv-ease)}
+.lv-egg-on .lv-egg-msg{opacity:1;translate:0 0}
+.lv-count{font-family:inherit;font-size:1.25em;margin-right:.25em}
+.lv-shoot{position:absolute;top:18%;left:8%;width:120px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#fff7d6);pointer-events:none;animation:lvShoot 1.3s var(--lv-ease) forwards;z-index:2}
+@keyframes lvShoot{0%{transform:translate(0,0) rotate(18deg);opacity:0}15%{opacity:1}100%{transform:translate(70vw,26vh) rotate(18deg);opacity:0}}
+
+/* 6 · Fußzeile */
+.lv-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:.8rem 2.5rem;margin:2rem 0 0;padding-top:1.2rem;border-top:1px dashed color-mix(in srgb,currentColor 35%,transparent)}
+.lv-foot-t{display:flex;align-items:center;gap:.6rem;margin:0;font-family:var(--lv-hand);font-size:var(--lv-foot-fs,1.45rem);line-height:1.15;color:var(--lv-foot-ink,inherit)}
+.lv-foot-i{width:1.25em;height:1.25em;flex:none;fill:var(--lv-foot-heart,#c8553d);animation:lvBeat 2.6s ease-in-out infinite}
+.lv-foot-i .o{fill:none;stroke:var(--lv-foot-heart,#c8553d);stroke-width:1.8}
+@keyframes lvBeat{0%,70%,100%{transform:scale(1)}78%{transform:scale(1.18)}86%{transform:scale(.96)}92%{transform:scale(1.1)}}
+.lv-top{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem;font-family:var(--lv-hand);font-size:var(--lv-foot-fs,1.35rem);color:var(--lv-foot-ink,inherit);padding:.2rem .3rem;border-radius:6px}
+.lv-top svg{width:1.6em;height:1.6em;overflow:visible;transition:transform .35s var(--lv-ease)}
+.lv-top path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.lv-top:hover svg{transform:translateY(-4px) rotate(-6deg)}
+.lv-top:focus-visible{outline:2px dashed currentColor;outline-offset:3px}
+
+/* Sanfte Übergänge zwischen Seiten (Impressum ⇄ Start) */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.38s;animation-timing-function:var(--lv-ease)}
+}
+/* Bewegung reduzieren: alles still und sofort sichtbar */
+@media (prefers-reduced-motion:reduce){
+  .lv-note,.lv-ul path,.lv-arrow path,.lv-fr,.lv-lift,.lv-egg-msg{transition:none!important}
+  .lv-foot-i{animation:none}
+  .lv-note{opacity:1;translate:0 0}
+}
+
+/* 404 – liebevoll verlaufen */
+.lv-404{margin:0;min-height:100vh;background:var(--lv-404-bg,var(--lv-paper));color:var(--lv-404-ink,#222);font-family:var(--lv-404-font,system-ui,sans-serif)}
+.lv-404 .demo-banner{background:#fff3b0;color:#3a2f00;font:500 .82rem/1.4 system-ui,sans-serif;padding:.5rem 1rem;text-align:center;border-bottom:1px solid #e6d27a}
+.lv-404-main{display:grid;place-items:center;padding:clamp(2rem,6vw,5rem) 1.2rem;min-height:calc(100vh - 3rem);box-sizing:border-box}
+.lv-404-card{position:relative;max-width:34rem;text-align:center}
+.lv-404-code{margin:0;font-family:var(--lv-404-display,inherit);font-size:clamp(4.5rem,18vw,8.5rem);line-height:.9;letter-spacing:-.02em;color:var(--lv-404-accent,#c8553d);opacity:.9}
+.lv-404-art{width:min(220px,60vw);margin:.4rem auto 1rem}
+.lv-404-art svg{width:100%;height:auto;overflow:visible}
+.lv-404 h1{font-family:var(--lv-404-display,inherit);font-size:clamp(1.6rem,5vw,2.4rem);line-height:1.1;margin:.2rem 0 .7rem;font-weight:var(--lv-404-hw,600)}
+.lv-404-text{font-size:1.05rem;line-height:1.55;margin:0 auto 1rem;max-width:28rem;opacity:.85}
+.lv-404-hand{font-family:var(--lv-hand);font-size:1.5rem;color:var(--lv-ink);transform:rotate(-2deg);margin:0 0 1.6rem}
+.lv-404-btn{display:inline-block;padding:.85rem 1.5rem;border-radius:var(--lv-404-r,999px);background:var(--lv-404-accent,#c8553d);color:var(--lv-404-btn-ink,#fff);text-decoration:none;font-weight:600;transition:transform .3s var(--lv-ease),box-shadow .3s var(--lv-ease)}
+.lv-404-btn:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.lv-404-btn:focus-visible{outline:2px dashed currentColor;outline-offset:4px}
+.lv-404-art .draw{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:lvDraw 1.6s .2s var(--lv-ease) forwards}
+@keyframes lvDraw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.lv-404-art .draw{animation:none;stroke-dashoffset:0}}
+
+/* Footer-Abschied vs. Chat-FAB (mobil) */
+@media (max-width:899px){
+  .lv-top{max-width:calc(100% - 4.75rem);box-sizing:border-box}
+  .lv-foot-in .cb-launcher{padding:0 13px;gap:0}
+  .lv-foot-in .cb-launcher-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}

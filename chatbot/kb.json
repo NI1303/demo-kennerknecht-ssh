@@ -1,0 +1,505 @@
+{
+ "version": 1,
+ "site": "(Website derzeit nicht erreichbar)",
+ "title": "Kennerknecht Robert GmbH",
+ "assistantName": "Demo-Assistent",
+ "launcherLabel": "Fragen?",
+ "avatar": "img/favicon.svg",
+ "placeholder": "z. B. Macht ihr auch Dachrinnen?",
+ "demoNote": "Demo-Assistent · antwortet nur mit öffentlichen Angaben · sendet nichts",
+ "theme": {
+  "accent": "#1f3a5a",
+  "accent-d": "#16293f",
+  "ink": "#1d2125",
+  "paper": "#fbfaf7",
+  "gold": "#b8733e",
+  "font": "'Atkinson', system-ui, sans-serif",
+  "serif": "'Bricolage', system-ui, sans-serif"
+ },
+ "greeting": "Grüß Gott! Ich bin der Demo-Assistent der Kennerknecht Robert GmbH – Spenglerei, Sanitär, Heizung. Fragen Sie mich nach Leistungen, Kontakt oder Anfahrt.",
+ "chips": [
+  {
+   "label": "Leistungen"
+  },
+  {
+   "label": "Notfall"
+  },
+  {
+   "label": "Wo finde ich euch?"
+  },
+  {
+   "label": "Anfrage"
+  }
+ ],
+ "stopwords": [
+  "haben",
+  "habt",
+  "gibt",
+  "gibts",
+  "ihre",
+  "euch",
+  "eure",
+  "eine",
+  "einen",
+  "auch",
+  "kann",
+  "koennen",
+  "welche",
+  "bitte",
+  "danke",
+  "hallo",
+  "noch",
+  "sind",
+  "seid",
+  "mich",
+  "uns",
+  "ihnen",
+  "moechte",
+  "gerne",
+  "fuer",
+  "mein",
+  "meine",
+  "ich",
+  "wir",
+  "macht",
+  "machen"
+ ],
+ "intents": [
+  {
+   "id": "greet",
+   "keywords": [
+    "hallo",
+    "servus",
+    "gruess gott",
+    "guten tag",
+    "moin",
+    "hi"
+   ],
+   "answer": "Grüß Gott! Wobei kann ich helfen – Dach, Wasser oder Heizung?",
+   "chips": [
+    {
+     "label": "Leistungen"
+    },
+    {
+     "label": "Notfall"
+    },
+    {
+     "label": "Wo finde ich euch?"
+    },
+    {
+     "label": "Anfrage"
+    }
+   ]
+  },
+  {
+   "id": "thanks",
+   "keywords": [
+    "danke",
+    "vielen dank",
+    "super",
+    "perfekt"
+   ],
+   "answer": "Gern geschehen!",
+   "chips": [
+    {
+     "label": "Leistungen"
+    },
+    {
+     "label": "Notfall"
+    },
+    {
+     "label": "Wo finde ich euch?"
+    },
+    {
+     "label": "Anfrage"
+    }
+   ]
+  },
+  {
+   "id": "leistungen",
+   "weight": 2,
+   "keywords": [
+    "leistungen",
+    "leistung",
+    "angebot",
+    "was macht",
+    "was machen",
+    "taetigkeit",
+    "service",
+    "arbeiten"
+   ],
+   "answer": "**Leistungen** (laut Branchenverzeichnis und Handelsregister):\n- **Spenglerei** – Blech an Dach und Fassade\n- **Sanitärinstallation**\n- **Heizungsinstallation**\n- **Lüftungsbau**\nDie genaue Leistungsliste bestätigt Ihnen der Betrieb gern am Telefon.",
+   "links": [
+    {
+     "label": "Zu den Leistungen",
+     "href": "#leistungen"
+    },
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    }
+   ]
+  },
+  {
+   "id": "dach",
+   "weight": 3,
+   "keywords": [
+    "dach",
+    "dachrinne",
+    "rinne",
+    "fallrohr",
+    "spengler",
+    "spenglerei",
+    "klempner",
+    "blech",
+    "kupfer",
+    "kamin",
+    "einfassung",
+    "fassade"
+   ],
+   "answer": "**Dach & Blech** ist Sache der Spenglerei: Kennerknecht führt Spenglerarbeiten aus. Ob Ihr konkretes Vorhaben dabei ist, klärt am schnellsten ein Anruf: **08325 233**.",
+   "links": [
+    {
+     "label": "Station Dach",
+     "href": "#dach"
+    },
+    {
+     "label": "Zur Anfrage",
+     "href": "#anfrage"
+    }
+   ]
+  },
+  {
+   "id": "wasser",
+   "weight": 3,
+   "keywords": [
+    "bad",
+    "badezimmer",
+    "sanitaer",
+    "wasser",
+    "rohr",
+    "leitung",
+    "wc",
+    "toilette",
+    "dusche",
+    "wasserhahn",
+    "armatur",
+    "tropft",
+    "abfluss",
+    "verstopft"
+   ],
+   "answer": "**Bad & Wasser:** Sanitärinstallation gehört zum Betrieb. Beschreiben Sie Ihr Anliegen kurz in der Anfrage oder rufen Sie an: **08325 233**.",
+   "links": [
+    {
+     "label": "Station Wasser",
+     "href": "#wasser"
+    },
+    {
+     "label": "Zur Anfrage",
+     "href": "#anfrage"
+    }
+   ]
+  },
+  {
+   "id": "waerme",
+   "weight": 3,
+   "keywords": [
+    "heizung",
+    "heizen",
+    "heizkoerper",
+    "warm",
+    "kalt",
+    "therme",
+    "kessel",
+    "brenner",
+    "waermepumpe",
+    "wartung",
+    "oel",
+    "gas",
+    "pellets",
+    "solar"
+   ],
+   "answer": "**Heizung:** Heizungsinstallation ist einer der drei Schwerpunkte. Welche Heizsysteme der Betrieb einbaut und wartet, steht noch nicht öffentlich – bitte direkt fragen: **08325 233**.",
+   "links": [
+    {
+     "label": "Station Wärme",
+     "href": "#waerme"
+    },
+    {
+     "label": "Zur Anfrage",
+     "href": "#anfrage"
+    }
+   ]
+  },
+  {
+   "id": "luft",
+   "weight": 3,
+   "keywords": [
+    "lueftung",
+    "lueftungsanlage",
+    "luft",
+    "klima",
+    "klimaanlage"
+   ],
+   "answer": "**Lüftung:** Lüftungsbau ist im Branchenverzeichnis als Tätigkeit eingetragen. Details bitte telefonisch klären: **08325 233**.",
+   "links": [
+    {
+     "label": "Station Luft",
+     "href": "#luft"
+    },
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    }
+   ]
+  },
+  {
+   "id": "notfall",
+   "weight": 4,
+   "keywords": [
+    "notfall",
+    "notdienst",
+    "rohrbruch",
+    "wasserschaden",
+    "heizungsausfall",
+    "dringend",
+    "sofort",
+    "wochenende",
+    "nachts",
+    "feiertag"
+   ],
+   "answer": "**Notfall?** Rufen Sie direkt an: **08325 233**. Ob es einen Notdienst außerhalb der Bürozeiten gibt, ist öffentlich nicht bekannt – das wird ergänzt, sobald der Betrieb es bestätigt.\nBei Rohrbruch: Hauptwasserhahn zudrehen.",
+   "links": [
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    }
+   ]
+  },
+  {
+   "id": "address",
+   "weight": 3,
+   "keywords": [
+    "adresse",
+    "anfahrt",
+    "wo seid",
+    "wo sind",
+    "wo ist",
+    "wo liegt",
+    "wie komme",
+    "route",
+    "navi",
+    "finden",
+    "wo finde",
+    "finde ich",
+    "wo finden",
+    "standort",
+    "anschrift",
+    "wiedemannsdorf",
+    "muehlenweg",
+    "werkstatt"
+   ],
+   "answer": "**Kennerknecht Robert GmbH**\nMühlenweg 15\n87534 Oberstaufen-Wiedemannsdorf",
+   "links": [
+    {
+     "label": "Route (OpenStreetMap)",
+     "href": "https://www.openstreetmap.org/?mlat=47.558101&mlon=10.089755#map=17/47.558101/10.089755"
+    },
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    }
+   ],
+   "chips": [
+    {
+     "label": "Leistungen"
+    },
+    {
+     "label": "Notfall"
+    },
+    {
+     "label": "Wo finde ich euch?"
+    },
+    {
+     "label": "Anfrage"
+    }
+   ]
+  },
+  {
+   "id": "contact",
+   "weight": 2,
+   "keywords": [
+    "telefon",
+    "anrufen",
+    "nummer",
+    "erreichen",
+    "kontakt",
+    "email",
+    "e mail",
+    "mail",
+    "fax",
+    "rueckruf"
+   ],
+   "answer": "**Kontakt**\nTel.: 08325 233\nFax: 08325 645\nE-Mail: info@ssh-kennerknecht.de",
+   "links": [
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    },
+    {
+     "label": "E-Mail schreiben",
+     "href": "mailto:info@ssh-kennerknecht.de"
+    },
+    {
+     "label": "Zur Anfrage",
+     "href": "#anfrage"
+    }
+   ]
+  },
+  {
+   "id": "anfrage",
+   "weight": 3,
+   "keywords": [
+    "anfrage",
+    "angebot",
+    "kostenvoranschlag",
+    "termin",
+    "beauftragen",
+    "auftrag",
+    "formular"
+   ],
+   "answer": "Am einfachsten über die **Anfrage** auf dieser Seite: Bereich wählen, kurz beschreiben, Telefonnummer dazu. _(In der Demo wird nichts gesendet.)_",
+   "links": [
+    {
+     "label": "Zur Anfrage",
+     "href": "#anfrage"
+    },
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    }
+   ]
+  },
+  {
+   "id": "hours",
+   "weight": 2,
+   "keywords": [
+    "oeffnungszeiten",
+    "bürozeiten",
+    "buerozeiten",
+    "geoeffnet",
+    "offen",
+    "wann",
+    "erreichbar",
+    "uhrzeit"
+   ],
+   "answer": "Die Bürozeiten sind öffentlich nicht angegeben. Bitte anrufen: **08325 233**.",
+   "links": [
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    }
+   ]
+  },
+  {
+   "id": "firma",
+   "weight": 2,
+   "keywords": [
+    "seit wann",
+    "gegruendet",
+    "geschichte",
+    "firma",
+    "gmbh",
+    "inhaber",
+    "chef",
+    "geschaeftsfuehrer",
+    "meister",
+    "meisterbetrieb"
+   ],
+   "answer": "Die **Kennerknecht Robert GmbH** ist seit **1989** als GmbH im Handelsregister eingetragen (Amtsgericht Kempten). Weitere Angaben zu Team und Meisterbetrieb folgen.",
+   "chips": [
+    {
+     "label": "Leistungen"
+    },
+    {
+     "label": "Notfall"
+    },
+    {
+     "label": "Wo finde ich euch?"
+    },
+    {
+     "label": "Anfrage"
+    }
+   ]
+  },
+  {
+   "id": "unknown",
+   "weight": 4,
+   "keywords": [
+    "preis",
+    "preise",
+    "kostet",
+    "kosten",
+    "foerderung",
+    "zuschuss",
+    "ausbildung",
+    "job",
+    "stelle",
+    "einsatzgebiet",
+    "kempten",
+    "sonthofen",
+    "lindenberg"
+   ],
+   "answer": "Preise, Förderungen und solche Details stehen nicht öffentlich – das klärt der Betrieb am besten direkt: **08325 233** oder per Anfrage.",
+   "links": [
+    {
+     "label": "08325 233 anrufen",
+     "href": "tel:+498325233"
+    },
+    {
+     "label": "Zur Anfrage",
+     "href": "#anfrage"
+    }
+   ],
+   "chips": [
+    {
+     "label": "Leistungen"
+    },
+    {
+     "label": "Notfall"
+    },
+    {
+     "label": "Wo finde ich euch?"
+    },
+    {
+     "label": "Anfrage"
+    }
+   ]
+  }
+ ],
+ "menu": {
+  "foundPrefix": "",
+  "links": [],
+  "followChips": [],
+  "sections": []
+ },
+ "fallback": {
+  "text": "Das kann ich leider nicht sicher beantworten – ich kenne nur die öffentlichen Angaben (Leistungen, Kontakt, Anfahrt). Rufen Sie gern an: **08325 233**.",
+  "links": [
+   {
+    "label": "08325 233 anrufen",
+    "href": "tel:+498325233"
+   },
+   {
+    "label": "Zur Anfrage",
+    "href": "#anfrage"
+   }
+  ]
+ },
+ "handoff": {
+  "tel": "+498325233",
+  "telLabel": "08325 233",
+  "mail": "info@ssh-kennerknecht.de",
+  "text": "Lieber persönlich?"
+ }
+}
