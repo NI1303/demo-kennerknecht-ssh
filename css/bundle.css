@@ -256,6 +256,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .z-dach text{fill:#fff}
 .a-form{position:relative}
 .station{grid-template-rows:auto 1fr}
+.kontakt .kicker,.kontakt dt{color:#e6a87a}
 
 /* css/premium.css */
 /* Premium-Schicht: Intro (Tropfen fällt aufs Dach, läuft ins Fallrohr), Fallrohr mit Tropfen als Kapitel-Anzeige (Kupfer → Patina) */
